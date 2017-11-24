@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <head>
+        <title>Simple test</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        
+        String
+        <h:form id="StringMenu">
+            <h:panelGrid columns="1">
+                <h:commandButton value="Create some Strings" action="#{stringBean.createFakeStrings()}"/>
+                <h:selectOneMenu value="#{stringBean.selectedString}">
+                    <f:selectItems value="#{stringBean.stringList}" var="ss" itemLabel="#{ss}" itemValue="#{ss}"/>
+                </h:selectOneMenu>
+                <h:commandButton action="#{stringBean.removeSelectedString}" value="delete selected String"/>
+            </h:panelGrid>
+        </h:form>
+        
+        
+        Entity
+        <h:form id="UserMenu">
+            <h:panelGrid columns="1">
+                <h:commandButton action="#{userService.createFakeUsers}" value="create Users"/>
+                <h:selectOneMenu value="#{userBean.selectedUser}">
+                    <f:selectItems value="#{userBean.userList}" var="su" itemLabel="#{su.name}" itemValue="#{su}"/>
+                </h:selectOneMenu>
+            </h:panelGrid>
+            <h:commandButton action="#{userBean.removeSelectedUser}" value="remove selected User"/>
+        </h:form>
+        
+        <h:panelGrid id="output" columns="1">
+            <h:outputLabel for="JsfVersion" value="JSF Version: "/>
+            <h:outputText id="JsfVersion" value="#{generalBean.jsfVersion}"/>
+        </h:panelGrid>
+        
+    </body>
+</html>
