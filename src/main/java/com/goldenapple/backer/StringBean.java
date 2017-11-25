@@ -8,7 +8,6 @@ package com.goldenapple.backer;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -16,9 +15,8 @@ import javax.inject.Named;
  *
  * @author istzustand
  */
-@ManagedBean
-@SessionScoped
 @Named
+@SessionScoped
 public class StringBean implements Serializable{
     
     private List<String> stringList;

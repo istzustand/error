@@ -7,6 +7,8 @@ package com.goldenapple.entity;
 
 
 import java.io.Serializable;
+import java.util.Objects;
+import javax.enterprise.inject.Any;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -51,11 +53,37 @@ public class UserEntity implements Serializable{
         this.age = age;
     }
 
-    public UserEntity() {
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 79 * hash + Objects.hashCode(this.name);
+        hash = 79 * hash + this.age;
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UserEntity other = (UserEntity) obj;
+        if (this.age != other.age) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+
     
     
-    
-    
-    
+    public UserEntity() {
+    }    
 }

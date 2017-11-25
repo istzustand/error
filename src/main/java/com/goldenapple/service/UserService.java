@@ -7,9 +7,7 @@ package com.goldenapple.service;
 
 import com.goldenapple.entity.UserEntity;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -23,9 +21,8 @@ import javax.persistence.criteria.Root;
  * @author istzustand
  */
 
-@ManagedBean
+
 @Stateless
-@Named
 public class UserService {
     
     @PersistenceContext(unitName = "primary")
@@ -40,7 +37,8 @@ public class UserService {
     }
     
     public void removeUser(UserEntity user){
-        em.remove(user);
+        UserEntity toBeRemoved = em.merge(user);
+        em.remove(toBeRemoved);
     }
     
     public List<UserEntity> getAllUsers(){
@@ -53,14 +51,8 @@ public class UserService {
         return myQuery.getResultList();
     }
     
-    public void createFakeUsers(){
-        UserEntity user = new UserEntity("Hans Wurst", 20);
-        em.persist(user);
-        user = new UserEntity("Dulli Kanulli", 25);
-        em.persist(user);
-        user = new UserEntity("Fnord", 23);
-        em.persist(user);
-        user = new UserEntity("Ford", 42);
-        em.persist(user);
+    public UserService() {
     }
+    
+    
 }

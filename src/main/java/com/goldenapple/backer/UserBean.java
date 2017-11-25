@@ -9,7 +9,6 @@ import com.goldenapple.entity.UserEntity;
 import com.goldenapple.service.UserService;
 import java.io.Serializable;
 import java.util.List;
-import javax.annotation.ManagedBean;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -18,9 +17,8 @@ import javax.inject.Named;
  *
  * @author istzustand
  */
-@ManagedBean
-@SessionScoped
 @Named
+@SessionScoped
 public class UserBean implements Serializable {
 
     @Inject
@@ -49,5 +47,12 @@ public class UserBean implements Serializable {
     
     public void removeSelectedUser(){
         removeUser(selectedUser);
+    }
+    
+    public void createFakeUsers(){
+        userService.saveUser(new UserEntity("Hans Wurst", 20));
+        userService.saveUser(new UserEntity("Dulli Kanulli", 25));
+        userService.saveUser(new UserEntity("Fnord", 23));
+        userService.saveUser(new UserEntity("Ford", 42));
     }
 }

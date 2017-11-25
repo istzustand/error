@@ -50,6 +50,5 @@ public class UserFacade {
         UserEntity user = userService.getById(id);
         userService.removeUser(user);
     }
-    
-    
+        
 }

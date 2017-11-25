@@ -7,6 +7,7 @@ package com.goldenapple.backer;
 
 import javax.annotation.ManagedBean;
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -15,9 +16,8 @@ import javax.inject.Named;
  * @author istzustand
  */
 
-@ManagedBean
-@Stateless
 @Named
+@RequestScoped
 public class generalBean {
     
     private final String jsfVersion;

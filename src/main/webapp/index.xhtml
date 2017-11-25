@@ -30,8 +30,8 @@ and open the template in the editor.
         Entity
         <h:form id="UserMenu">
             <h:panelGrid columns="1">
-                <h:commandButton action="#{userService.createFakeUsers}" value="create Users"/>
-                <h:selectOneMenu value="#{userBean.selectedUser}">
+                <h:commandButton action="#{userBean.createFakeUsers}" value="create Users"/>
+                <h:selectOneMenu value="#{userBean.selectedUser}" converter="#{userConverter}">
                     <f:selectItems value="#{userBean.userList}" var="su" itemLabel="#{su.name}" itemValue="#{su}"/>
                 </h:selectOneMenu>
             </h:panelGrid>
